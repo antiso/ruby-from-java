@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ruby-from-java" default="all">
+  
+  
+  <property file="src/ruby-from-java.properties"/>
+  
+  <path id="classpath">
+    <pathelement location="${jruby.home}/lib/jruby.jar"/>
+    <pathelement path="." />
+    <pathelement path="src/"/>
+  </path>
+  
+
+  <target name="clean" description="cleanup all">
+      <delete file="Sample.class"/>
+  </target>
+
+  <target name="build" description="build">
+      <javac srcdir="src" destdir="."/>
+  </target>
+
+  <target name="run" description="executes sample">
+      <java classname="Sample" classpathref="classpath" />
+  </target>
+
+  <target name="all" depends="clean, build, run" description="build all"/>
+</project>
